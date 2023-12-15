@@ -28,7 +28,7 @@ export const env = createEnv({
     AUTH0_ISSUER: z.string(),
     NEXT_PUBLIC_STRIPE_PK: z.string(),
     STRIPE_SK: z.string(),
-    STRIPE_PRICE_ID: z.string(),
+
     STRIPE_WEBHOOK_SECRET: z.string(),
     NEXT_PUBLIC_ENCRYPTION_KEY: z.string().min(32),
     NEXT_PUBLIC_STORE_ID: z.string(),
@@ -39,6 +39,7 @@ export const env = createEnv({
     RESEND_API_KEY: z.string(),
     SHOP_EMAIL: z.string().email(),
     NEXT_PUBLIC_API_URL: z.string().url(),
+    NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET: z.string(),
   },
 
   /**
@@ -53,6 +54,7 @@ export const env = createEnv({
     NEXT_PUBLIC_SITE_DIRECTORY: z.string(),
     NEXT_PUBLIC_STORE_NAME: z.string(),
     NEXT_PUBLIC_API_URL: z.string().url(),
+    NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET: z.string(),
   },
 
   /**
@@ -71,7 +73,7 @@ export const env = createEnv({
     AUTH0_ISSUER: process.env.AUTH0_ISSUER,
     NEXT_PUBLIC_STRIPE_PK: process.env.NEXT_PUBLIC_STRIPE_PK,
     STRIPE_SK: process.env.STRIPE_SK,
-    STRIPE_PRICE_ID: process.env.STRIPE_PRICE_ID,
+
     STRIPE_WEBHOOK_SECRET: process.env.STRIPE_WEBHOOK_SECRET,
     NEXT_PUBLIC_ENCRYPTION_KEY: process.env.NEXT_PUBLIC_ENCRYPTION_KEY,
     NEXT_PUBLIC_STORE_ID: process.env.NEXT_PUBLIC_STORE_ID,
@@ -82,6 +84,8 @@ export const env = createEnv({
     RESEND_API_KEY: process.env.RESEND_API_KEY,
     SHOP_EMAIL: process.env.SHOP_EMAIL,
     NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL,
+    NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET:
+      process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET,
   },
   /**
    * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation.

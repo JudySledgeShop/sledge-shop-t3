@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { ImagePlus, Trash } from "lucide-react";
 import Image from "next/image";
 import { Button } from "~/components/ui/button";
+import { env } from "~/env.mjs";
 
 interface ImageUploadProps {
   disabled?: boolean;
@@ -60,7 +61,10 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
           </div>
         ))}
       </div>
-      <CldUploadWidget onUpload={onUpload} uploadPreset="wo25zskm">
+      <CldUploadWidget
+        onUpload={onUpload}
+        uploadPreset={env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET}
+      >
         {({ open }) => {
           const onClick = () => {
             open();
