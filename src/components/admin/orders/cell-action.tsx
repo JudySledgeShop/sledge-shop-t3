@@ -15,7 +15,7 @@ import {
   DropdownMenuTrigger,
 } from "~/components/ui/dropdown-menu";
 
-import { useShippingModal } from "~/hooks/use-shipping-modal";
+import { useShippingModal } from "~/hooks/admin/use-shipping-modal";
 import { api } from "~/utils/api";
 import type { OrderColumn } from "./columns";
 
@@ -97,9 +97,13 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
           >
             <Edit className="mr-2 h-4 w-4" /> Update
           </DropdownMenuItem>
-          <DropdownMenuItem onClick={() => shippingModal.onOpen(data)}>
-            <Edit className="mr-2 h-4 w-4" /> Create label
-          </DropdownMenuItem>
+          {data?.isPaid && (
+            <DropdownMenuItem onClick={() => shippingModal.onOpen(data)}>
+              <Edit className="mr-2 h-4 w-4" />{" "}
+              {data?.labelCreated ? "Download" : "Create"} label
+            </DropdownMenuItem>
+          )}
+
           <DropdownMenuItem onClick={() => setOpen(true)}>
             <Trash className="mr-2 h-4 w-4" /> Delete
           </DropdownMenuItem>

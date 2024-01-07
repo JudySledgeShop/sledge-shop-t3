@@ -10,7 +10,6 @@ import getSizes from "~/actions/core/get-sizes";
 
 import AttributeFilter from "~/components/core/category/attribute-filter";
 
-import { Billboard as BillboardType } from "@prisma/client";
 import { useParams, useSearchParams } from "next/navigation";
 import MobileFilters from "~/components/core/category/mobile-filters";
 import Billboard from "~/components/core/ui/billboard";

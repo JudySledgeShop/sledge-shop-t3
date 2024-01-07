@@ -2,10 +2,10 @@
 
 import axios from "axios";
 import { useSearchParams } from "next/navigation";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo } from "react";
 
 import { toast } from "react-hot-toast";
-import Shippo from "shippo";
+
 import Button from "~/components/core/ui/button";
 import Currency from "~/components/core/ui/currency";
 import { env } from "~/env.mjs";
@@ -15,11 +15,9 @@ import { api } from "~/utils/api";
 
 const Summary = () => {
   const searchParams = useSearchParams();
-  const items = useCart((state) => state.items);
+
   const cartItems = useCart((state) => state.cartItems);
   const removeAll = useCart((state) => state.removeAll);
-
-  const [shipping, setShipping] = useState<string | number>("");
 
   const { data: store } = api.store.getStore.useQuery({
     storeId: env.NEXT_PUBLIC_STORE_ID,

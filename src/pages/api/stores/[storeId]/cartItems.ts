@@ -4,15 +4,12 @@ import type { NextApiRequest, NextApiResponse } from "next";
 // import { appRouter } from "~/server/api/root";
 import { createTRPCContext } from "~/server/api/trpc";
 
-import type { Stripe } from "stripe";
-import { stripe } from "~/server/stripe/client";
-import { CartItem } from "~/types";
+import type { CartItem } from "~/types";
 
 const cartItemsHandler = async (req: NextApiRequest, res: NextApiResponse) => {
   const ctx = await createTRPCContext({ req, res });
 
   const { cartItems } = req.body;
-  const { storeId } = req.query;
 
   try {
     switch (req.method) {

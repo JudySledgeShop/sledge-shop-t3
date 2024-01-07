@@ -20,7 +20,6 @@ import * as z from "zod";
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
   TableHead,
   TableHeader,

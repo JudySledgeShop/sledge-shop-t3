@@ -9,17 +9,7 @@ const colorByIdHandler = async (req: NextApiRequest, res: NextApiResponse) => {
   const ctx = await createTRPCContext({ req, res });
   const caller = appRouter.createCaller(ctx);
 
-  const userId = ctx.session?.user.id;
   const { collectionId } = req.query;
-  const { storeId } = req.query;
-  const { name, billboardId, products } = req.body;
-
-  const storeByUserId = await ctx.prisma.store.findFirst({
-    where: {
-      id: storeId as string,
-      userId,
-    },
-  });
 
   try {
     switch (req.method) {

@@ -1,18 +1,11 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import { CheckIcon, ChevronsUpDown } from "lucide-react";
 import Image from "next/image";
 import { useRouter as useNavigationRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { Button } from "~/components/ui/button";
-import {
-  Command,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-} from "~/components/ui/command";
+
 import {
   Form,
   FormControl,
@@ -21,16 +14,10 @@ import {
   FormLabel,
   FormMessage,
 } from "~/components/ui/form";
-import { Input } from "~/components/ui/input";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "~/components/ui/popover";
+
 import { RadioGroup, RadioGroupItem } from "~/components/ui/radio-group";
 import useCart from "~/hooks/core/use-cart";
 import { toast } from "~/hooks/use-toast";
-import { cn } from "~/utils/styles";
 
 const paymentFormSchema = z.object({
   payment: z.enum(["credit", "paypal", "cash"]),

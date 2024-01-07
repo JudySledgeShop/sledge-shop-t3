@@ -1,12 +1,7 @@
-import { type ShippingType } from "@prisma/client";
 import { TRPCError } from "@trpc/server";
 import { z } from "zod";
 import { env } from "~/env.mjs";
-import {
-  createTRPCRouter,
-  protectedProcedure,
-  publicProcedure,
-} from "~/server/api/trpc";
+import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
 
 export const emailRouter = createTRPCRouter({
   // Queries for the frontend
@@ -18,7 +13,7 @@ export const emailRouter = createTRPCRouter({
         email: z.string(),
       })
     )
-    .mutation(async ({ ctx, input }) => {
+    .mutation(async ({ input }) => {
       const req = await fetch(`${env.NEXT_PUBLIC_API_URL}/email/inquiry`, {
         method: "POST",
         headers: {

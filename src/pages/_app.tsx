@@ -1,12 +1,10 @@
-import { AnimatePresence, motion } from "framer-motion";
 import { type Session } from "next-auth";
 import { SessionProvider } from "next-auth/react";
 import { type AppType } from "next/app";
-import Router, { useRouter } from "next/router";
+import Router from "next/router";
 import "~/styles/globals.css";
 import { api } from "~/utils/api";
 
-import Head from "next/head";
 import NProgress from "nprogress";
 import "nprogress/nprogress.css";
 import { Toaster } from "~/components/ui/toaster";
@@ -15,11 +13,11 @@ import StorefrontModalProvider from "~/providers/core/modal-provider";
 import { ThemeProvider } from "~/providers/theme-provider";
 import { ToastProvider } from "~/providers/toast-provider";
 
-Router.events.on("routeChangeStart", (url) => {
+Router.events.on("routeChangeStart", () => {
   NProgress.start();
 });
 
-Router.events.on("routeChangeComplete", (url) => {
+Router.events.on("routeChangeComplete", () => {
   NProgress.done(false);
 });
 
@@ -27,8 +25,6 @@ const MyApp: AppType<{ session: Session | null }> = ({
   Component,
   pageProps: { session, ...pageProps },
 }) => {
-  const router = useRouter();
-
   return (
     <SessionProvider session={session}>
       <ThemeProvider attribute="class" defaultTheme="system" enableSystem>

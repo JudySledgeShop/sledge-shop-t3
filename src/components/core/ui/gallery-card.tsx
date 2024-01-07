@@ -1,14 +1,4 @@
-import { Product } from "@prisma/client";
-import { Expand, ShoppingCart } from "lucide-react";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
-import type { MouseEventHandler } from "react";
-
-import Currency from "~/components/core/ui/currency";
-import IconButton from "~/components/core/ui/icon-button";
-import useCart from "~/hooks/core/use-cart";
-import usePreviewModal from "~/hooks/core/use-preview-modal";
-import { DetailedProductFull } from "~/types";
 
 interface ProductCard {
   data: string;
@@ -18,14 +8,9 @@ import { Button } from "~/components/ui/button";
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogFooter,
-  DialogHeader,
-  DialogTitle,
   DialogTrigger,
 } from "~/components/ui/dialog";
-import { Input } from "~/components/ui/input";
-import { Label } from "~/components/ui/label";
 
 const GalleryCard: React.FC<ProductCard> = ({ data }) => {
   return (

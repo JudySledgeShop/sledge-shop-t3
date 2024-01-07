@@ -9,11 +9,11 @@ import StorefrontLayout from "~/layouts/StorefrontLayout";
 
 import { api } from "~/utils/api";
 
-import { GetServerSidePropsContext } from "next";
+import type { GetServerSidePropsContext } from "next";
 import Head from "next/head";
 import Breadcrumbs from "~/components/core/category/breadcrumbs";
 import { prisma } from "~/server/db";
-import type { DetailedProduct, DetailedProductFull } from "~/types";
+import type { DetailedProductFull } from "~/types";
 
 const ProductPage = ({ prevUrl, name }: { name: string; prevUrl: string }) => {
   const params = useParams();

@@ -1,4 +1,3 @@
-import { Product } from "@prisma/client";
 import { Expand, ShoppingCart } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -8,7 +7,7 @@ import Currency from "~/components/core/ui/currency";
 import IconButton from "~/components/core/ui/icon-button";
 import useCart from "~/hooks/core/use-cart";
 import usePreviewModal from "~/hooks/core/use-preview-modal";
-import { DetailedProductFull } from "~/types";
+import type { DetailedProductFull } from "~/types";
 
 interface ProductCard {
   data: DetailedProductFull;

@@ -1,7 +1,7 @@
 import type { GetServerSidePropsContext } from "next";
 import type { FC } from "react";
 
-import { BillboardForm } from "~/components/admin/billboards/billboard-form";
+import { BillboardForm } from "~/components/admin/shipping/billboard-form";
 import PageLoader from "~/components/ui/page-loader";
 
 import { api } from "~/utils/api";

@@ -1,19 +1,12 @@
-import { format } from "date-fns";
-import { useCallback, useEffect, useState, type FC } from "react";
+import { type FC } from "react";
 
-import type { GetServerSidePropsContext } from "next";
-
-import { api } from "~/utils/api";
-import { authenticateSession } from "~/utils/auth";
-
-import PageLoader from "~/components/ui/page-loader";
 import AdminLayout from "~/layouts/AdminLayout";
 
 interface IProps {
   storeId: string;
 }
 
-const ShippingPage: FC<IProps> = ({ storeId }) => {
+const ShippingPage: FC<IProps> = ({}) => {
   return (
     <AdminLayout>
       <h1>Shipping Test</h1>

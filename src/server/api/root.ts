@@ -7,6 +7,7 @@ import { ordersRouter } from "~/server/api/routers/orders";
 // import { sizesRouter } from "~/server/api/routers/sizes";
 import { storeRouter } from "~/server/api/routers/stores";
 import { createTRPCRouter } from "~/server/api/trpc";
+import { shippingLabelRouter } from "./routers/admin/shipping-labels";
 import { attributesRouter } from "./routers/attributes";
 import { emailRouter } from "./routers/core/emails";
 import { productsRouter } from "./routers/products";
@@ -31,6 +32,7 @@ export const appRouter = createTRPCRouter({
   users: userRouter,
   shipping: shippingRouter,
   attributes: attributesRouter,
+  shippingLabels: shippingLabelRouter,
 
   email: emailRouter,
 });

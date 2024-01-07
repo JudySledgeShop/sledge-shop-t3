@@ -1,15 +1,14 @@
 import { useSession } from "next-auth/react";
 import Head from "next/head";
-import { useParams } from "next/navigation";
-import { useRouter } from "next/router";
+
 import { useMemo } from "react";
 
 import { SidebarNav } from "~/components/core/profile/sidebar-nav";
 import Container from "~/components/core/ui/container";
-import { Label } from "~/components/ui/label";
+
 import PageLoader from "~/components/ui/page-loader";
 import { Separator } from "~/components/ui/separator";
-import { api } from "~/utils/api";
+
 import StorefrontLayout from "./StorefrontLayout";
 
 interface SettingsLayoutProps {
@@ -17,9 +16,7 @@ interface SettingsLayoutProps {
 }
 
 export default function ProfileLayout({ children }: SettingsLayoutProps) {
-  const { data: sessionData, status } = useSession();
-  const router = useRouter();
-  const params = useParams();
+  const { status } = useSession();
 
   const navItems = useMemo(() => {
     return [

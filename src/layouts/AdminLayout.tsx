@@ -15,6 +15,7 @@ export default function AdminLayout({
         <meta name="description" content="Admin" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
       <main className="flex h-screen flex-col overflow-y-auto">
         <Navbar />
         {children}

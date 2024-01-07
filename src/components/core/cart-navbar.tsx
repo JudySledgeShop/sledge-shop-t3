@@ -1,9 +1,6 @@
 import { Lock } from "lucide-react";
 import Link from "next/link";
 
-import getCategories from "~/actions/core/get-categories";
-import MainNav from "~/components/core/main-nav";
-import NavbarActions from "~/components/core/navbar-actions";
 import Container from "~/components/core/ui/container";
 
 const CartNavbar = () => {

@@ -1,16 +1,9 @@
 import axios from "axios";
 import { toast } from "react-hot-toast";
-import { Mutate, State, StoreApi, create } from "zustand";
+import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
-import { env } from "~/env.mjs";
 
-import type { CartItem, DetailedProductFull, Variation } from "~/types";
-
-type NewCartItem = {
-  productId: string;
-  variantId: string | null;
-  quantity: number;
-};
+import type { CartItem, DetailedProductFull } from "~/types";
 
 interface CartStore {
   items: DetailedProductFull[];

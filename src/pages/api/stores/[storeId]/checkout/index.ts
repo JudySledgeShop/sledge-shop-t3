@@ -4,16 +4,15 @@ import type { NextApiRequest, NextApiResponse } from "next";
 // import { appRouter } from "~/server/api/root";
 import { createTRPCContext } from "~/server/api/trpc";
 
-import { Cart, Product } from "@prisma/client";
 import axios from "axios";
 import type { Stripe } from "stripe";
 import { stripe } from "~/server/stripe/client";
-import { CartItem, DetailedProductFull } from "~/types";
+import { type CartItem } from "~/types";
 
 const checkoutHandler = async (req: NextApiRequest, res: NextApiResponse) => {
   const ctx = await createTRPCContext({ req, res });
 
-  const { productIds, variantIds, quantity, cartItems, shipping } = req.body;
+  const { productIds, quantity, cartItems, shipping } = req.body;
   const { storeId } = req.query;
 
   try {
@@ -156,7 +155,7 @@ const checkoutHandler = async (req: NextApiRequest, res: NextApiResponse) => {
               storeId: storeId as string,
               isPaid: false,
               orderItems: {
-                create: verifiedDBData.map((product: CartItem, idx: number) => {
+                create: verifiedDBData.map((product: CartItem) => {
                   if (product.variant === null)
                     return {
                       product: {

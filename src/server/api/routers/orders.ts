@@ -14,8 +14,10 @@ export const ordersRouter = createTRPCRouter({
           orderItems: {
             include: {
               product: true,
+              variant: true,
             },
           },
+          shippingLabel: true,
         },
         orderBy: {
           createdAt: "desc",
@@ -37,6 +39,7 @@ export const ordersRouter = createTRPCRouter({
           id: input.orderId,
         },
         include: {
+          shippingLabel: true,
           orderItems: {
             include: {
               variant: true,

@@ -4,8 +4,8 @@ import { useCallback, useEffect, useState, type FC } from "react";
 import type { Billboard } from "@prisma/client";
 import { format } from "date-fns";
 
-import { BillboardClient } from "~/components/admin/billboards/client";
-import type { BillboardColumn } from "~/components/admin/billboards/columns";
+import { BillboardClient } from "~/components/admin/shipping/client";
+import type { BillboardColumn } from "~/components/admin/shipping/columns";
 import PageLoader from "~/components/ui/page-loader";
 
 import AdminLayout from "~/layouts/AdminLayout";

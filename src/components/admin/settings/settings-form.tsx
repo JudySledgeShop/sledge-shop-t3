@@ -1,6 +1,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import type { Store } from "@prisma/client";
-import axios from "axios";
+
 import { CheckIcon, ChevronsUpDown, LoaderIcon, Trash } from "lucide-react";
 import { useRouter as useNavigationRouter } from "next/navigation";
 import { useRouter } from "next/router";
@@ -28,7 +28,7 @@ import {
   FormMessage,
 } from "~/components/ui/form";
 import { Heading } from "~/components/ui/heading";
-import ImageUpload from "~/components/ui/image-upload";
+
 import { Input } from "~/components/ui/input";
 import {
   Popover,

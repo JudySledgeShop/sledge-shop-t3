@@ -1,12 +1,11 @@
-import { Combobox, Listbox, Transition } from "@headlessui/react";
 import { zodResolver } from "@hookform/resolvers/zod";
-import type { Billboard, Collection, Product } from "@prisma/client";
+import type { Billboard, Product } from "@prisma/client";
 import { Command as CommandPrimitive } from "cmdk";
-import { CheckIcon, ChevronsUpDown, Trash, X } from "lucide-react";
+import { Trash, X } from "lucide-react";
 import { useRouter as useNavigationRouter } from "next/navigation";
 import { useRouter } from "next/router";
-import { Fragment, useCallback, useEffect, useRef, useState } from "react";
-import { Controller, useFieldArray, useForm } from "react-hook-form";
+import { useCallback, useRef, useState } from "react";
+import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import * as z from "zod";
 import { AlertModal } from "~/components/admin/modals/alert-modal";
@@ -33,7 +32,7 @@ import {
   SelectValue,
 } from "~/components/ui/select";
 import { Separator } from "~/components/ui/separator";
-import { DetailedCollection } from "~/types";
+import type { DetailedCollection } from "~/types";
 import { api } from "~/utils/api";
 
 const formSchema = z.object({
@@ -96,6 +95,7 @@ export const CollectionForm: React.FC<CollectionFormProps> = ({
       .getValues("products")
       .filter((s) => s.id !== product.id);
     form.setValue("products", current);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleKeyDown = useCallback(
@@ -116,6 +116,7 @@ export const CollectionForm: React.FC<CollectionFormProps> = ({
         }
       }
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     []
   );
 

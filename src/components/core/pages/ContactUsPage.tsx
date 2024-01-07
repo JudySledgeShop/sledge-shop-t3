@@ -1,7 +1,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import Head from "next/head";
 import Image from "next/image";
-import { useRouter as useNavigationRouter } from "next/navigation";
 
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -21,22 +20,16 @@ import { Textarea } from "~/components/ui/textarea";
 import StorefrontLayout from "~/layouts/StorefrontLayout";
 import { api } from "~/utils/api";
 
-const formSchema = z.object({
-  password: z.string(),
-});
-
 const emailSchema = z.object({
   email: z.string().email(),
   name: z.string(),
   body: z.string(),
 });
 
-type PassCodeFormValues = z.infer<typeof formSchema>;
 type EmailFormValues = z.infer<typeof emailSchema>;
 
 const ContactUsPage = () => {
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigationRouter();
 
   const form = useForm<EmailFormValues>({
     resolver: zodResolver(emailSchema),

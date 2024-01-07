@@ -1,6 +1,5 @@
 "use client";
 
-import { useParams } from "next/navigation";
 import { useRouter } from "next/router";
 import { ApiAlert } from "~/components/ui/api-alert";
 import { useOrigin } from "~/hooks/use-origin";
