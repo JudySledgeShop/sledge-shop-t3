@@ -1,22 +1,20 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
-  Prisma,
   type Order,
   type OrderItem,
   type Product,
   type Variation,
 } from "@prisma/client";
-import { CheckIcon, SortAscIcon, Trash } from "lucide-react";
+import { Trash } from "lucide-react";
 import { useRouter as useNavigationRouter } from "next/navigation";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Controller, useFieldArray, useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import * as z from "zod";
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
@@ -40,23 +38,9 @@ import {
 import { Heading } from "~/components/ui/heading";
 import { Input } from "~/components/ui/input";
 import { Separator } from "~/components/ui/separator";
-import { prisma } from "~/server/db";
-import { ItemDetailsCardGrid } from "./item-details-card";
 
-import { ErrorMessage } from "@hookform/error-message";
-import {
-  Command,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-} from "~/components/ui/command";
 import { Label } from "~/components/ui/label";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "~/components/ui/popover";
+
 import {
   Select,
   SelectContent,
@@ -64,8 +48,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "~/components/ui/select";
-import { cn } from "~/utils/styles";
-import ViewOrder from "./view-order";
+
 const formSchema = z.object({
   isPaid: z.boolean(),
   phone: z.string().min(9).max(12),
@@ -115,12 +98,6 @@ export const OrderForm: React.FC<OrderFormProps> = ({ initialData }) => {
   const params = useRouter();
   const router = useNavigationRouter();
   const utils = api.useContext();
-  const { data: products } = api.products.getAllProducts.useQuery({
-    storeId: params?.query?.storeId as string,
-  });
-
-  const [openProducts, setOpenProducts] = useState(false);
-  const [productValue, setProductValue] = useState("");
 
   const [open, setOpen] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
@@ -243,7 +220,7 @@ export const OrderForm: React.FC<OrderFormProps> = ({ initialData }) => {
     });
   };
 
-  const { fields, append, remove, update, replace } = useFieldArray({
+  const { fields, remove } = useFieldArray({
     control: form.control,
     name: "orderItems",
   });

@@ -1,15 +1,14 @@
 import { TRPCError } from "@trpc/server";
 import { getHTTPStatusCodeFromError } from "@trpc/server/http";
 import { type NextApiRequest, type NextApiResponse } from "next";
-import { appRouter } from "~/server/api/root";
+
 import { createTRPCContext } from "~/server/api/trpc";
-import { easyPost } from "~/server/easypost/client";
+
 import { shippoClient } from "~/server/shippo/client";
 
 const rateHandler = async (req: NextApiRequest, res: NextApiResponse) => {
   // Create context and caller
   const ctx = await createTRPCContext({ req, res });
-  const caller = appRouter.createCaller(ctx);
 
   const userId = ctx.session?.user.id;
   const { storeId } = req.query;
@@ -57,7 +56,7 @@ const rateHandler = async (req: NextApiRequest, res: NextApiResponse) => {
             street2: business_additional,
             city: business_city,
             state: business_state,
-            zip: business_zip,
+            zip: `${business_zip}`,
             country: "US",
           };
 
@@ -67,7 +66,7 @@ const rateHandler = async (req: NextApiRequest, res: NextApiResponse) => {
             street2: customer_additional,
             city: customer_city,
             state: customer_state,
-            zip: customer_zip,
+            zip: `${customer_zip}`,
             country: "US",
           };
 
@@ -79,6 +78,13 @@ const rateHandler = async (req: NextApiRequest, res: NextApiResponse) => {
             weight: weight_lb + weight_oz / 16,
             mass_unit: "lb",
           };
+
+          console.log({
+            address_from: addressFrom,
+            address_to: addressTo,
+            parcels: [parcel],
+            async: false,
+          });
 
           const results = await shippoClient.shipment.create({
             address_from: addressFrom,

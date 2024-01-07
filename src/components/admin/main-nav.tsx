@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useParams, usePathname } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { useRouter } from "next/router";
 
 import { cn } from "~/utils/styles";
@@ -11,7 +11,7 @@ export function MainNav({
   ...props
 }: React.HTMLAttributes<HTMLElement>) {
   const pathname = usePathname();
-  const params = useParams();
+
   const router = useRouter();
 
   if (!router?.query?.storeId) return null;
@@ -45,6 +45,12 @@ export function MainNav({
       label: "Products",
       active:
         pathname === `/admin/${router?.query?.storeId.toString()}/products`,
+    },
+    {
+      href: `/admin/${router?.query?.storeId.toString()}/shipping`,
+      label: "Shipping",
+      active:
+        pathname === `/admin/${router?.query?.storeId.toString()}/shipping`,
     },
     {
       href: `/admin/${router?.query?.storeId.toString()}/orders`,

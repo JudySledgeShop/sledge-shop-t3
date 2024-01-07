@@ -1,6 +1,6 @@
 import qs from "query-string";
-import { string } from "zod";
-import { DetailedProductFull } from "~/types";
+
+import type { DetailedProductFull } from "~/types";
 
 const URL = `${process.env.NEXT_PUBLIC_API_URL}/products`;
 

@@ -1,18 +1,14 @@
-import { GetServerSidePropsContext } from "next";
-import Link from "next/link";
-import { FC } from "react";
-import getCollection from "~/actions/core/get-collection";
-import getProducts from "~/actions/core/get-products";
-import AttributeFilter from "~/components/core/category/attribute-filter";
+import type { GetServerSidePropsContext } from "next";
+
+import type { FC } from "react";
+
 import Breadcrumbs from "~/components/core/category/breadcrumbs";
-import MobileFilters from "~/components/core/category/mobile-filters";
-import Billboard from "~/components/core/ui/billboard";
-import Header from "~/components/core/ui/header";
+
 import NoResults from "~/components/core/ui/no-results";
 import ProductCard from "~/components/core/ui/product-card";
 import PageLoader from "~/components/ui/page-loader";
 import StorefrontLayout from "~/layouts/StorefrontLayout";
-import { DetailedCollection, DetailedProductFull } from "~/types";
+
 import { api } from "~/utils/api";
 
 type ICollectionPageProps = {

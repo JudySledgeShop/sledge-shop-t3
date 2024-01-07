@@ -1,4 +1,4 @@
-import { OrderItem } from "@prisma/client";
+import type { OrderItem } from "@prisma/client";
 import Image from "next/image";
 import { api } from "~/utils/api";
 

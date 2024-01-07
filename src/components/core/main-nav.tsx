@@ -1,14 +1,12 @@
-import { Menu, Transition } from "@headlessui/react";
-import { ChevronDown } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Fragment } from "react";
+
 import {
   HoverCard,
   HoverCardContent,
   HoverCardTrigger,
 } from "~/components/ui/hover-card";
-import type { Category, Collection, DetailedCollection } from "~/types";
+import type { Collection, DetailedCollection } from "~/types";
 import { cn } from "~/utils/styles";
 interface MainNavProps {
   data: DetailedCollection[];
@@ -18,11 +16,12 @@ interface MainNavProps {
 const MainNav: React.FC<MainNavProps> = ({ data, collections }) => {
   const pathname = usePathname();
 
-  const routes = data.map((route) => ({
-    href: `/collections/${route.id}`,
-    label: route.name,
-    active: pathname === `/collections/${route.id}`,
-  }));
+  console.log(data);
+  // const routes = data.map((route) => ({
+  //   href: `/collections/${route.id}`,
+  //   label: route.name,
+  //   active: pathname === `/collections/${route.id}`,
+  // }));
 
   return (
     <nav className="mx-6 flex items-center space-x-4 lg:space-x-6">

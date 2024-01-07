@@ -12,7 +12,6 @@ const colorByIdHandler = async (req: NextApiRequest, res: NextApiResponse) => {
   const userId = ctx.session?.user.id;
   const { categoryId } = req.query;
   const { storeId } = req.query;
-  const { name, billboardId } = req.body;
 
   const storeByUserId = await ctx.prisma.store.findFirst({
     where: {

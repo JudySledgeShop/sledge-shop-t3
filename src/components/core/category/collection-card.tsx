@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { DetailedCollection } from "~/types";
+
+import type { DetailedCollection } from "~/types";
 
 import { cn } from "~/utils/styles";
 

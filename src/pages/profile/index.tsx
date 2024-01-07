@@ -1,4 +1,3 @@
-import StorefrontLayout from "~/layouts/StorefrontLayout";
 import ProfileLayout from "~/layouts/profile-layout";
 
 const ProfilePage = () => {

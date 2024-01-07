@@ -84,10 +84,12 @@ const VariantSelector: FC<IProps> = ({
       setVariant(null);
     }
     setQuantity(watchedValues.quantity);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [watchedValues, product.variants]);
 
   useEffect(() => {
     if (variant) form.setValue("quantity", 1);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [variant]);
 
   const availableOptions = product?.variants?.map((variant) => {

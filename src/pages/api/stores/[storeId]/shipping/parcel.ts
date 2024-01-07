@@ -1,19 +1,17 @@
 import { TRPCError } from "@trpc/server";
 import { getHTTPStatusCodeFromError } from "@trpc/server/http";
 import { type NextApiRequest, type NextApiResponse } from "next";
-import { appRouter } from "~/server/api/root";
+
 import { createTRPCContext } from "~/server/api/trpc";
-import { easyPost } from "~/server/easypost/client";
+
 import { shippoClient } from "~/server/shippo/client";
 
 const addressHandler = async (req: NextApiRequest, res: NextApiResponse) => {
   // Create context and caller
   const ctx = await createTRPCContext({ req, res });
-  const caller = appRouter.createCaller(ctx);
 
   const userId = ctx.session?.user.id;
   const { storeId } = req.query;
-  const { name, value } = req.body;
 
   const storeByUserId = await ctx.prisma.store.findFirst({
     where: {
@@ -97,21 +95,6 @@ const addressHandler = async (req: NextApiRequest, res: NextApiResponse) => {
           return res.status(405).json({ message: "Unauthorized" });
 
         try {
-          const { street1, street2, city, state, zip, country, phone, name } =
-            req.body;
-
-          const fromAddress = await shippoClient.address.create({
-            name: "Shawn Ippotle",
-            company: "Shippo",
-            street1: "215 Clayton St.",
-            city: "San Francisco",
-            state: "CA",
-            zip: "94117",
-            country: "US", // iso2 country code
-            phone: "+1 555 341 9393",
-            email: "shippotle@shippo.com",
-          });
-
           const addressFrom = {
             name: "Shawn Ippotle",
             street1: "",
@@ -128,15 +111,6 @@ const addressHandler = async (req: NextApiRequest, res: NextApiResponse) => {
             state: "MI",
             zip: "48178",
             country: "US",
-          };
-
-          const parcel = {
-            length: 5,
-            width: 5,
-            height: 5,
-            distance_unit: "in",
-            weight: 2,
-            mass_unit: "lb",
           };
 
           const results = await shippoClient.shipment.create({

@@ -2,11 +2,13 @@
 
 import { useEffect, useState } from "react";
 
-import { ShippingModal } from "~/components/admin/modals/shipping-modal";
 import { StoreModal } from "~/components/admin/modals/store-modal";
+import { ShippingModal } from "~/components/admin/orders/shipping-modal";
+import { useShippingModal } from "~/hooks/admin/use-shipping-modal";
 
 export const ModalProvider = () => {
   const [isMounted, setIsMounted] = useState(false);
+  const { data } = useShippingModal();
 
   useEffect(() => {
     setIsMounted(true);
@@ -19,7 +21,7 @@ export const ModalProvider = () => {
   return (
     <>
       <StoreModal />
-      <ShippingModal />
+      <ShippingModal data={data} />
     </>
   );
 };

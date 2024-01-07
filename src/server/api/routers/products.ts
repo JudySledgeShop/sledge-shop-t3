@@ -7,7 +7,7 @@ import {
   protectedProcedure,
   publicProcedure,
 } from "~/server/api/trpc";
-import { CartItem } from "~/types";
+import type { CartItem } from "~/types";
 
 import {
   extractQueryString,

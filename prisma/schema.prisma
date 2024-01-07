@@ -201,13 +201,30 @@ model Order {
   name            String      @default("")
   phone           String      @default("")
   address         String      @default("")
-  // trackingNumber  String      @default("")
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+  shippingLabel   ShippingLabel?
+
+  @@index([storeId])
+
+}
+
+
+model ShippingLabel {
+  id              String      @id @default(uuid())
+  labelUrl        String?  @db.Text 
+  trackingNumber  String?  @db.Text 
+  cost            String?      
+  carrier         String?
+  timeEstimate    String?
+  expireAt        DateTime?
   createdAt       DateTime    @default(now())
   updatedAt       DateTime    @updatedAt
 
-  @@index([storeId])
+  order           Order?      @relation( fields: [orderId], references: [id])
+  orderId         String?     @unique
+  @@index([orderId])
 }
-
 // Intermediary for a many-to-many relationship
 model OrderItem {
   id        String     @id @default(uuid())

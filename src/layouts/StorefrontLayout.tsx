@@ -1,8 +1,7 @@
-import Head from "next/head";
 import { useEffect } from "react";
 import Footer from "~/components/core/footer";
 import Navbar from "~/components/core/navbar";
-import Container from "~/components/core/ui/container";
+
 import useCart from "~/hooks/core/use-cart";
 
 export default function StorefrontLayout({
@@ -10,7 +9,6 @@ export default function StorefrontLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const cart = useCart();
   const updateStore = () => {
     // void cart.verifyValues();
 

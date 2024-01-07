@@ -1,7 +1,6 @@
 import { format } from "date-fns";
 import { useCallback, useEffect, useState, type FC } from "react";
 
-import type { Order, Product } from "@prisma/client";
 import type { GetServerSidePropsContext } from "next";
 import type { OrderColumn } from "~/components/admin/orders/columns";
 
@@ -12,15 +11,10 @@ import { formatter } from "~/utils/styles";
 import { OrderClient } from "~/components/admin/orders/client";
 import PageLoader from "~/components/ui/page-loader";
 import AdminLayout from "~/layouts/AdminLayout";
+import type { DetailedOrder } from "~/types";
 
 interface IProps {
   storeId: string;
-}
-
-interface ExtendedOrder extends Order {
-  orderItems: Array<{
-    product: Product;
-  }>;
 }
 
 const OrdersPage: FC<IProps> = ({ storeId }) => {
@@ -29,10 +23,11 @@ const OrdersPage: FC<IProps> = ({ storeId }) => {
     storeId,
   });
 
-  const formatOrders = useCallback((orders: ExtendedOrder[]) => {
-    return orders.map((item: ExtendedOrder) => ({
+  const formatOrders = useCallback((orders: DetailedOrder[]) => {
+    return orders.map((item: DetailedOrder) => ({
       id: item.id,
       phone: item.phone,
+      name: item.name,
       address: item.address,
       products: item.orderItems
         .map((orderItem) => orderItem.product.name)
@@ -43,6 +38,7 @@ const OrdersPage: FC<IProps> = ({ storeId }) => {
         }, 0)
       ),
       isPaid: item.isPaid,
+      labelCreated: item.shippingLabel?.labelUrl ? true : false,
       createdAt: format(item.createdAt, "MMMM do, yyyy"),
     }));
   }, []);

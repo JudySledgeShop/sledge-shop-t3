@@ -1,5 +1,5 @@
 import { Check, ChevronsUpDown, PlusCircle, Store } from "lucide-react";
-import { redirect, useRouter as useNavigationRouter } from "next/navigation";
+import { useRouter as useNavigationRouter } from "next/navigation";
 import { useRouter } from "next/router";
 import * as React from "react";
 import { Button } from "~/components/ui/button";

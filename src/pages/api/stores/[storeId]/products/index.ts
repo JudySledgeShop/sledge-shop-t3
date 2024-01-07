@@ -1,7 +1,7 @@
 import { TRPCError } from "@trpc/server";
 import { getHTTPStatusCodeFromError } from "@trpc/server/http";
 import { type NextApiRequest, type NextApiResponse } from "next";
-import { appRouter } from "~/server/api/root";
+
 import { createTRPCContext } from "~/server/api/trpc";
 
 const productsHandler = async (req: NextApiRequest, res: NextApiResponse) => {

@@ -1,5 +1,5 @@
-import type { GetServerSidePropsContext, GetStaticPropsContext } from "next";
-import { getSession } from "next-auth/react";
+import type { GetServerSidePropsContext } from "next";
+
 import { getServerAuthSession } from "~/server/auth";
 import { prisma } from "~/server/db";
 

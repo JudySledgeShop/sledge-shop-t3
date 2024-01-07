@@ -1,22 +1,13 @@
-import type { GetServerSidePropsContext } from "next";
-import type { ParsedUrlQuery } from "querystring";
-import type { FC } from "react";
-import type { Category, DetailedProductFull, Size, Variation } from "~/types";
-
-import getCategory from "~/actions/core/get-category";
-
-import getProducts from "~/actions/core/get-products";
-import getSizes from "~/actions/core/get-sizes";
+import type { DetailedProductFull } from "~/types";
 
 import AttributeFilter from "~/components/core/category/attribute-filter";
 
-import type { Attribute, Product } from "@prisma/client";
 import MobileFilters from "~/components/core/category/mobile-filters";
-import Billboard from "~/components/core/ui/billboard";
+
 import NoResults from "~/components/core/ui/no-results";
 import ProductCard from "~/components/core/ui/product-card";
 
-import { useParams, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import StorefrontLayout from "~/layouts/StorefrontLayout";
 import { api } from "~/utils/api";
 
